@@ -1,0 +1,210 @@
+
+$blue: rgb(76, 148, 231);
+$blue-hover: rgb(60, 136, 223);
+$dark: #262827;
+$lightgray: #ecf0f3;
+$green: rgb(92, 196, 92);
+$green-hover: rgb(72, 187, 72);
+$lightred: rgb(240, 95, 95);
+$lightred-hover: rgb(231, 71, 71);
+
+* :not(.map-container-element *){
+    transition: .2s all linear;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.page-loader {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(172, 165, 165, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loader-img {
+        height: 50px;
+    }
+}
+
+.map-div {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.map-container-element {
+    height: 700px; 
+    width: calc(100vw - 400px);
+}
+
+
+.map-loading-element, .map-map-element {
+    height: 100%;
+    width: calc(100vw - 400px);
+}
+
+.map-zone {
+    height: 700px;
+    width: 100%;
+    background-color: $lightgray;
+    display: flex;
+
+    .map-menu {
+        border-right: 1px solid rgb(219, 219, 219);
+        color: $dark;
+
+        .title-generator {
+            background-color: $blue;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                font-size: 22px;
+                color: white;
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        .settings-map-generate {
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 18px;
+            text-align: center;
+
+            .localize-or {
+                margin-top: 20px;
+                font-weight: 700;
+                color: $blue;
+            }
+
+            .localize-me-btn {
+                height: 60px;
+                padding: 0px 30px;
+                width: 275px;
+                background-color: $blue;
+                margin-top: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $green;
+                }
+
+                i {
+                    margin-right: 15px;
+                    color: white;
+                }
+
+                p {
+                    text-transform: uppercase;
+                    color: white;
+                    font-weight: 700;
+                }
+            }
+
+            .step-2 {
+                margin-top: 35px;
+            }
+
+            .map-settings-buttons {
+                width: 275px;
+                height: 60px;
+                margin-top: 45px;
+                display: flex;
+                justify-content: space-around;
+                align-content: center;
+
+                .map-undo {
+                    height: 100%;
+                    width: 60px;
+                    background-color: $blue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: $blue-hover;
+                    }
+                }
+
+                .map-reset {
+                    height: 100%;
+                    padding: 0px 15px;
+                    background-color: $lightred;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    font-weight: 700;
+                    cursor: pointer;
+
+                    i {
+                        margin-right: 10px;
+                    }
+
+                    &:hover {
+                        background-color: $lightred-hover;
+                    }
+                }
+            }
+
+            .map-generate-map-button {
+                width: 270px;
+                height: 60px;
+                background-color: $green;
+                margin-top: 45px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-weight: 700;
+
+                i {
+                    margin-right: 10px;
+                }
+
+                &:hover {
+                    background-color: $green-hover;
+                }
+            }
+        }
+    }
+}
+
+.map-menu {
+    width: 400px;
+    height: 100%;
+}
+
+//ROUTE GENERATOR FIRST STEP
+
+.route-generator-first-step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

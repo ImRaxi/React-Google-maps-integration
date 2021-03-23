@@ -36,12 +36,12 @@ class RouteGeneratorFirstStep extends Component {
                 <div className={'map-undo'}>
                     <i className="fas fa-undo-alt"></i>
                 </div>
-                <div className={'map-reset'}>
+                <div className={'map-reset'} onClick={() => this.props.resetRoute()}>
                     <i className="far fa-trash-alt"></i><p>RESETUJ TRASĘ</p>
                 </div>
             </div>
 
-            <div className={'map-generate-map-button'} onClick={() => this.props.click()}>
+            <div className={'map-generate-map-button'} onClick={() => this.props.generateRoute()}>
                 <i className="fas fa-route"></i><p>WYZNACZ TRASĘ</p>
             </div>
         </div>

@@ -25,7 +25,8 @@ class GMap extends Component {
       markerPosition: null,
 
       mapLoading: false,
-      pageLoading: false
+      pageLoading: false,
+      resetMap: true
     }
   }
 
@@ -35,9 +36,12 @@ class GMap extends Component {
 
     this.setState({
       markerPosition: {lat: data.latLng.lat(), lng: data.latLng.lng()},
-      markersList: this.state.markerPosition.concat({lat: data.latLng.lat(), lng: data.latLng.lng()})
     }, () => {
-      console.log(this.state.markersList)
+      this.setState({
+        markersList: [...this.state.markersList, this.state.markerPosition]
+      }, () => {
+        console.log(this.state.markersList)
+      });
     });
   }
 
@@ -67,12 +71,19 @@ class GMap extends Component {
         stepsToDestination: result.routes[0].legs[0].steps,
         distanceToDestination: result.routes[0].legs[0].distance.text,
         avgTimeArrival: result.routes[0].legs[0].duration.text,
-        markers: this.state.usersWaypoints
+        markers: this.state.usersWaypoints,
       });
 
     } catch (e) {
         console.log(e);
     }
+  }
+
+  resetRoute() {
+    console.log('ASDASDA');
+    this.setState({
+      resetMap: false,
+    });
   }
 
   render() {
@@ -109,7 +120,8 @@ class GMap extends Component {
 
           <div className={'settings-map-generate'}>
             <RouteGeneratorFirstStep 
-              click = {() => this.generateRoute()}
+              generateRoute = {() => this.generateRoute()}
+              resetRoute = {this.resetRoute.bind(this)}
             />
           </div>
 
@@ -117,7 +129,7 @@ class GMap extends Component {
         
         <Map
           googleMapURL={"https://maps.googleapis.com/maps/api/js?key=" + googleMapsApiKey + "&libraries=geometry,drawing,places"}
-          markerPosition={this.state.markerPosition}
+          // markerPosition={this.state.markerPosition}
           markers={markers}
           containerElement={<div className={'map-container-element'}></div>}
           loadingElement={<div className={'map-loading-element'} />}
@@ -125,6 +137,8 @@ class GMap extends Component {
           defaultCenter={{ lat: 52.236493627580906, lng: 19.688148984375 }}
           defaultZoom={7}
           onMapClick={e => this.getRouteData(e)}
+          markersList = {this.state.markersList}
+          resetMap = {this.state.resetMap}
         />
 
         {/* <button onClick={() => this.generateRoute()}>wyznacz trase</button>

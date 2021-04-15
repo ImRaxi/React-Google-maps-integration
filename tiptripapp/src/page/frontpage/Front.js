@@ -25,7 +25,7 @@ class Front extends Component {
 
   async getCountries() {
     try {
-      const myReq = 'http://tiptrip.pl/backend/index.php/wp-json/wp/v2/country';
+      const myReq = 'http://tiptrip.pl/backend/index.php/wp-json/wp/v2/country/?per_page=100';
       
       let res = await fetch(myReq, {
           method: 'get',
@@ -56,7 +56,7 @@ class Front extends Component {
     console.log(val)
 
       try {
-        const myReq = 'http://ttbackend.localhost/wp-json/acf/v3/country';
+        const myReq = 'http://ttbackend.localhost/wp-json/acf/v3/country/?per_page=100';
 
         
         let res = await fetch(myReq, {
